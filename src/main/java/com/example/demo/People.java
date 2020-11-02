@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class People <PersonType extends Person> implements Iterable<PersonType>{
@@ -28,11 +29,12 @@ public abstract class People <PersonType extends Person> implements Iterable<Per
         personList.clear();
     }
 
+    //This method will NOT take an argument of Collection<PersonType>
     //ask if it is right?
-    public void addAll(){
-      //  for(PersonType p:this.personList){
-      //      personList.add(p);
-      //  }
+    public void addAll(Iterable<PersonType> personTypes){
+       for(PersonType p:personTypes){
+            personList.add(p);
+        }
     }
     public PersonType findById(Long id){
 
@@ -45,7 +47,7 @@ public abstract class People <PersonType extends Person> implements Iterable<Per
     }
 
     public List<PersonType> findAll(){
-        return personList;
+        return this.personList;
     }
 
     public List<PersonType> getPersonList() {

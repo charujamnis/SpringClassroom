@@ -35,9 +35,9 @@ public class TestInstructor {
     @Test
     public void testLecture(){
         List<Student> students =new ArrayList<>();
-        students.add(new Student(1L,"Sam"));
-        students.add(new Student(2L,"Anita"));
-        students.add(new Student(3L,"Meena"));
+        students.add(new Student(1L,"Ferdinand"));
+        students.add(new Student(2L,"Robert"));
+        students.add(new Student(3L,"Jessica"));
 
         instructor.lecture(students,15.00);
         Assert.assertEquals(5,students.get(0).getTotalStudyTime(),0);

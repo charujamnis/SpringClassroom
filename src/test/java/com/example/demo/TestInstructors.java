@@ -63,10 +63,9 @@ public class TestInstructors {
         Instructor rohan=new Instructor(7L,"Rohan");
         newList.add(sahil);
         newList.add(rohan);
-        Instructors addInstructors=new Instructors(newList);
-        addInstructors.addAll();
+        instructors.addAll(newList);
         String actual="Rohan";
-        String expected=addInstructors.findById(7L).getName();
+        String expected=instructors.findById(7L).getName();
         Assert.assertEquals(actual,expected);
 
     }
