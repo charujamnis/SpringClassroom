@@ -20,7 +20,6 @@ public class StudentConfig {
         newStudents=new ArrayList<>();
         newStudents.add(new Student(220L,"Elle"));
         newStudents.add(new Student(221L,"Alexa"));
-
         return new Students(newStudents);
     }
 

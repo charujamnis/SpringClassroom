@@ -33,6 +33,9 @@ public class TestInstructorConfig {
         list=tuesdayInstructors.getPersonList();
         Assert.assertEquals("Brian",tuesdayInstructors.findById(10L).getName());
         Assert.assertEquals(11L,list.get(1).getId());
+        for(int i=0;i<list.size();i++) {
+            Assert.assertFalse(list.get(i).getId()==12L); //12L in not tuesdayInstructors list.
+        }
 
     }
 
@@ -41,8 +44,10 @@ public class TestInstructorConfig {
         List<Instructor> list=new ArrayList<>();
         list=thursdayInstructors.getPersonList();
         Assert.assertEquals("Zan",thursdayInstructors.findById(12L).getName());
-        Assert.assertEquals(12L,list.get(0).getId());
-
+        Assert.assertEquals(13L,list.get(1).getId());
+        for(int i=0;i<list.size();i++) {
+            Assert.assertFalse(list.get(i).getId()==10L); //10L in not thursdayInstructors list.
+        }
     }
 
     @Test
@@ -50,6 +55,8 @@ public class TestInstructorConfig {
         List<Instructor> list=new ArrayList<>();
         list=allInstructors.getPersonList();
         int size=allInstructors.getPersonList().size();
+        Assert.assertEquals("Brian",allInstructors.findById(10L).getName());
+        Assert.assertEquals("Zan",allInstructors.findById(12L).getName());
         Assert.assertEquals("Kaleb",allInstructors.findById(11L).getName());
         Assert.assertEquals("Julia",allInstructors.findById(13L).getName());
         Assert.assertEquals(10L,list.get(0).getId());

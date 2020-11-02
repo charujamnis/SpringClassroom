@@ -37,9 +37,8 @@ public class TestClassroomConfig {
     @Test
     public void testPreviousCohort(){
         classroomConfig.previousCohort();
-        System.out.println("Name: "+classroomConfig.getInstructorList().get(0).getName());
         Assert.assertEquals("Zan",classroomConfig.getInstructorList().get(0).getName());
         Assert.assertEquals("Vara",classroomConfig.getStudentPreviousList().get(1).getName());
-        Assert.assertFalse(classroomConfig.getStudentPreviousList().contains(401L));
+        Assert.assertFalse(classroomConfig.getStudentPreviousList().contains(401L)); //401L is in currentCohort().
     }
 }
