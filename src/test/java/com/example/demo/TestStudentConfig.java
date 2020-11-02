@@ -26,16 +26,15 @@ public class TestStudentConfig {
     @Qualifier("previousStudents")
     Students pStudents;
 
-    List<Student> newStudents;
-    List<Student> oldStudents;
-
     @Test
     public void testCurrentStudents(){
         Assert.assertEquals("Elle",cStudents.findById(220L).getName());
+        Assert.assertEquals("Alexa",cStudents.findById(221L).getName());
     }
 
     @Test
     public void testPreviousStudents(){
         Assert.assertEquals("Albert",pStudents.findById(222L).getName());
+        Assert.assertEquals("Corie",pStudents.findById(223L).getName());
     }
 }
