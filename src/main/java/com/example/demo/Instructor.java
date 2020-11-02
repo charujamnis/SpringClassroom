@@ -21,12 +21,11 @@ public class Instructor extends Person implements Teacher {
         while(it.hasNext()){
             count++;
         }*/
-        Integer count=0;
+        Integer studentsCount=0;
         for(Learner l:learners){
-            count++;
+            studentsCount++;
         }
-        this.numberOfHoursPerLearner=numberOfHours/count;
-
+        this.numberOfHoursPerLearner=numberOfHours/studentsCount;
        for(Learner learner : learners){
            learner.learn(numberOfHoursPerLearner);
         }
@@ -34,6 +33,6 @@ public class Instructor extends Person implements Teacher {
 
 
     public double getNumberOfHoursPerLearner() {
-        return numberOfHoursPerLearner;
+        return this.numberOfHoursPerLearner;
     }
 }
