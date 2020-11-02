@@ -13,9 +13,9 @@ public class TestPeople {
     public void setUp(){
         List<Person> personList=new ArrayList<>();
         Student student=new Student(1L,"Lolu");
-        Student student1=new Student(1L,"Apoorva");
-        Instructor instructor=new Instructor(2L,"Brian");
-        Instructor instructor1=new Instructor(2L,"Zan");
+        Student student1=new Student(2L,"Apoorva");
+        Instructor instructor=new Instructor(3L,"Brian");
+        Instructor instructor1=new Instructor(4L,"Zan");
         personList.add(student);
         personList.add(student1);
         personList.add(instructor);
