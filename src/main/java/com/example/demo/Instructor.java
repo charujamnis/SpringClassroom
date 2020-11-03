@@ -16,22 +16,18 @@ public class Instructor extends Person implements Teacher {
     @Override
     public void lecture(Iterable<? extends Learner> learners, double numberOfHours) {
         //get the length of the Learners.
-        /*int count=0;
-        Iterator<? extends Learner> it=learners.iterator();
-        while(it.hasNext()){
-            count++;
-        }*/
+        System.out.println("in lecture");
         Integer studentsCount=0;
         for(Learner l:learners){
+            System.out.println("in side fore each");
             studentsCount++;
         }
+        System.out.println("students count "+studentsCount);
         this.numberOfHoursPerLearner=numberOfHours/studentsCount;
        for(Learner learner : learners){
            learner.learn(numberOfHoursPerLearner);
         }
     }
-
-
     public double getNumberOfHoursPerLearner() {
         return this.numberOfHoursPerLearner;
     }
