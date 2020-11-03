@@ -13,17 +13,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestClassroomConfig {
+    @Autowired
     ClassroomConfig classroomConfig;
+
     @Autowired
     @Qualifier("instructorsBean")
     Instructors instructors;
 
     @Autowired
-    @Qualifier("studentsBean")
+    @Qualifier("students")
     Students students;
 
     @Autowired
-    @Qualifier("studentsPreviousBean")
+    @Qualifier("previousStudents")
     Students previousStudents;
 
     @Before
@@ -34,16 +36,23 @@ public class TestClassroomConfig {
     @Test
     public void testCurrentCohort(){
         classroomConfig.currentCohort();
+        Student sam= (Student) students.getPersonList().get(0);
+        Student tisha= (Student) students.getPersonList().get(1);
+        Student elle= (Student) students.getPersonList().get(2);
         Assert.assertEquals("Brian",classroomConfig.getInstructorList().get(1).getName());
-        Assert.assertEquals("Charu",classroomConfig.getStudentList().get(0).getName());
-        Assert.assertFalse(classroomConfig.getStudentList().contains(404L));
+        Assert.assertEquals("Sam",sam.getName());
+        Assert.assertEquals("Tisha",tisha.getName());
+        Assert.assertEquals(220L,elle.getId());
     }
 
     @Test
     public void testPreviousCohort(){
         classroomConfig.previousCohort();
-        Assert.assertEquals("Zan",classroomConfig.getInstructorList().get(0).getName());
-        Assert.assertEquals("Vara",classroomConfig.getStudentPreviousList().get(1).getName());
-        Assert.assertFalse(classroomConfig.getStudentPreviousList().contains(401L)); //401L is in currentCohort().
+        Student albert= (Student) previousStudents.getPersonList().get(0);
+        Student corie= (Student) previousStudents.getPersonList().get(1);
+        Student robert= (Student) previousStudents.getPersonList().get(2);
+        Assert.assertEquals("Albert",albert.getName());
+        Assert.assertEquals("Corie",corie.getName());
+        Assert.assertEquals(224L,robert.getId());
     }
 }

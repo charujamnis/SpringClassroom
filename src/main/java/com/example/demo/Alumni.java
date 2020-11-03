@@ -10,12 +10,9 @@ import javax.annotation.PostConstruct;
 @Component
 public class Alumni {
     @Autowired
-    @Qualifier("previousStudents")
-    Students students;
+    @Qualifier("previousCohort")
+    Classroom pCohort;
 
-    @Autowired
-    @Qualifier("instructorsBean")
-    Instructors instructors;
 
     public Alumni(){
         System.out.println("in Alumni constructor");
@@ -24,28 +21,20 @@ public class Alumni {
     @PostConstruct
     public void executeBootCamp(){
         double numberOfHoursToTeachEachStudent=1200;
-        for(int i=0;i<instructors.getPersonList().size();i++){
-            Teacher teacher= (Teacher) instructors.getPersonList().get(i);
-                for(int j=0;j<students.getPersonList().size();j++) {
-                    Learner learner = (Learner) students.getPersonList().get(j);
+        for(int i=0;i<pCohort.getInstructors().getPersonList().size();i++){
+            Teacher teacher= (Teacher) pCohort.getInstructors().getPersonList().get(i);
+                for(int j=0;j<pCohort.getStudents().getPersonList().size();j++) {
+                    Learner learner = (Learner) pCohort.getStudents().getPersonList().get(j);
                     teacher.teach(learner,numberOfHoursToTeachEachStudent);
                 }
         }
     }
 
-    public Students getStudents() {
-        return students;
+    public Classroom getpCohort() {
+        return pCohort;
     }
 
-    public void setStudents(Students students) {
-        this.students = students;
-    }
-
-    public Instructors getInstructors() {
-        return instructors;
-    }
-
-    public void setInstructors(Instructors instructors) {
-        this.instructors = instructors;
+    public void setpCohort(Classroom pCohort) {
+        this.pCohort = pCohort;
     }
 }
