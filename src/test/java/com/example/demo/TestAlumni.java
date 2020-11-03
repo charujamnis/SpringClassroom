@@ -16,27 +16,27 @@ import java.util.ArrayList;
 public class TestAlumni {
 
     @Autowired
+    @Qualifier("alumni")
     Alumni alumni;
 //lecture
     @Test
     public void testExecuteBootCamp(){
-        Student student1= (Student) alumni.getStudents().getPersonList().get(0);
-        Instructor instructor1= (Instructor) alumni.getInstructors().getPersonList().get(1);
+        Student albert = (Student) alumni.getpCohort().getStudents().getPersonList().get(0);
 
-        int numberOfInstructors=alumni.getInstructors().size();
-        int numberOfStudents=alumni.getStudents().size();
+        Instructor brian= (Instructor) alumni.getpCohort().getInstructors().getPersonList().get(1);
+
+        int numberOfInstructors=alumni.getpCohort().getInstructors().size();
+        int numberOfStudents=alumni.getpCohort().getStudents().size();
         double numberOfHoursToTeachEachStudent = 1200;
         double numberOfHoursToTeach = numberOfHoursToTeachEachStudent * numberOfStudents;
         double numberOfHoursPerInstructor = numberOfHoursToTeach / numberOfInstructors;
-        alumni.executeBootCamp();
-        Assert.assertEquals(3600,numberOfHoursToTeach,0);
-        Assert.assertEquals("Albert",student1.getName());
-        Assert.assertEquals(222L,student1.getId());
-       // Assert.assertEquals(1200,numberOfHoursPerInstructor,0);
-        Assert.assertEquals(1800,numberOfHoursPerInstructor,0);
-
-        Assert.assertEquals("Brian",instructor1.getName());
-        Assert.assertEquals(302L,instructor1.getId());
+        Assert.assertEquals(4800,numberOfHoursToTeach,0);
+        Assert.assertEquals("Albert",albert.getName());
+        Assert.assertEquals(222L,albert.getId());
+        Assert.assertEquals(1200,brian.getNumberOfHoursPerLearner(),0);
+        Assert.assertEquals(2400,albert.getTotalStudyTime(),0);
+        Assert.assertEquals(2400,numberOfHoursPerInstructor,0);
+        Assert.assertEquals("Brian",brian.getName());
+        Assert.assertEquals(302L,brian.getId());
     }
-
 }

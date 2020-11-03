@@ -23,6 +23,12 @@ public class InstructorsConfig {
         return new Instructors(tuesdayInstructors);
     }
 
+    /*
+    *
+        instructors.add(new Instructor(100l, "Zan"));
+        instructors.add(new Instructor(101l, "Brian"));
+        instructors.add(new Instructor(102l, "Kaleb"));
+        instructors.add(new Instructor(103l, "Tutor"));*/
     @Bean(name="delTechThursdayInstructors")
     public Instructors delTechThursdayInstructors(){
         thursdayInstructors=new ArrayList<>();
