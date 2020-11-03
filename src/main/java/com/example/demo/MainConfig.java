@@ -7,12 +7,10 @@ public class MainConfig {
         AnnotationConfigApplicationContext context =
                     new AnnotationConfigApplicationContext(StudentConfig.class);
 
-        Students al=context.getBean("students",Students.class);
-
-        System.out.println( "In main config class");
-        //al.setMessage("hey! Hello");
-       // System.out.println(al.getMessage());
-
+        Students beanStudents=context.getBean("students",Students.class);
+        Student student= (Student) beanStudents.getPersonList().get(2);
+        System.out.println("The size of the student list is "+beanStudents.getPersonList().size());
+        System.out.println("The name from the student list "+student.getName());
         context.close();
     }
 }
